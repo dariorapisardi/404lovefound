@@ -82,9 +82,9 @@ export async function GET(request: Request) {
   } catch (error) {
     console.error("Error in adoptable-pet route:", error)
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "An unknown error occurred" },
-      { status: 500 },
-    )
-  }
+      { error: "An unexpected error occurred. Please try again later." },
+    { status: 500 },
+  );
+}
 }
 
