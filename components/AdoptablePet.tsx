@@ -9,6 +9,7 @@ import { ChevronLeft, ChevronRight, AlertCircle, MapPin } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useSwipeable } from "react-swipeable"
 import { getRandomZipCode } from "../lib/zipCodes"
+import { postcodeValidator } from "postcode-validator"
 
 interface Picture {
   id: string
@@ -29,7 +30,7 @@ export default function AdoptablePet() {
   const [zipCodeError, setZipCodeError] = useState<string | null>(null)
 
   const isValidUSZipCode = (zipCode: string): boolean => {
-    return /^\d{5}(-\d{4})?$/.test(zipCode)
+    return postcodeValidator(zipCode, "US")
   }
 
   const fetchUserLocation = useCallback(async () => {

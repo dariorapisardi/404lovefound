@@ -20,6 +20,9 @@ importers:
       next:
         specifier: 15.1.0
         version: 15.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      postcode-validator:
+        specifier: ^3.10.2
+        version: 3.10.2
       react:
         specifier: ^19
         version: 19.0.0
@@ -1384,6 +1387,9 @@ packages:
   possible-typed-array-names@1.1.0:
     resolution: {integrity: sha512-/+5VFTchJDoVj3bhoqi6UeymcD00DAwb1nJwamzPvHEszJ4FpF6SNNbUbOS8yI56qHzdV8eK0qEfOSiodkTdxg==}
     engines: {node: '>= 0.4'}
+
+  postcode-validator@3.10.2:
+    resolution: {integrity: sha512-KIwfGxBYfLVLmjfVbc2Uge340q+rAuICeLyRXX6Ul4FjahZ1xnGSt843fj4AVtliy29I0g0pda3YK/T43EO3Gw==}
 
   postcss-import@15.1.0:
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
@@ -3252,6 +3258,8 @@ snapshots:
   pirates@4.0.6: {}
 
   possible-typed-array-names@1.1.0: {}
+
+  postcode-validator@3.10.2: {}
 
   postcss-import@15.1.0(postcss@8.5.3):
     dependencies:
