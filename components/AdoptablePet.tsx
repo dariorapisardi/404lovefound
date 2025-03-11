@@ -19,6 +19,54 @@ interface Picture {
   }
 }
 
+interface ZipCodeFormProps {
+  zipCode: string
+  zipCodeError: string | null
+  onZipCodeChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+  buttonText?: string
+  className?: string
+  showLabel?: boolean
+}
+
+function ZipCodeForm({
+  zipCode,
+  zipCodeError,
+  onZipCodeChange,
+  onSubmit,
+  buttonText = "Update",
+  className = "",
+  showLabel = false,
+}: ZipCodeFormProps) {
+  return (
+    <form onSubmit={onSubmit} className={`flex flex-col gap-2 ${className}`}>
+      {showLabel && (
+        <p className="text-gray-600 mb-2">Try searching in a different location (US Zip Code):</p>
+      )}
+      <div className="flex items-center bg-gray-100 rounded-full p-2">
+        <MapPin className="text-gray-400 ml-2" size={20} />
+        <input
+          type="text"
+          value={zipCode}
+          onChange={onZipCodeChange}
+          placeholder="Enter US ZIP code"
+          className="bg-transparent border-none focus:ring-0 flex-grow px-3 py-1 w-20"
+          maxLength={5}
+        />
+        <button
+          type="submit"
+          className="bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-bold py-2 px-4 rounded-full"
+        >
+          {buttonText}
+        </button>
+      </div>
+      {zipCodeError && (
+        <p className="text-red-500 text-sm text-center">{zipCodeError}</p>
+      )}
+    </form>
+  )
+}
+
 export default function AdoptablePet() {
   const [pets, setPets] = useState<Pet[]>([])
   const [pictures, setPictures] = useState<{ [key: string]: Picture }>({})
@@ -168,29 +216,15 @@ export default function AdoptablePet() {
       <div className="bg-white rounded-3xl shadow-lg p-8 text-center">
         <p className="text-gray-800 mb-4">No pets found at the moment.</p>
         
-        <form onSubmit={handleZipCodeSubmit} className="flex flex-col gap-2 max-w-md mx-auto mb-4">
-          <p className="text-gray-600 mb-2">Try searching in a different location (US Zip Code):</p>
-          <div className="flex items-center bg-gray-100 rounded-full p-2">
-            <MapPin className="text-gray-400 ml-2" size={20} />
-            <input
-              type="text"
-              value={zipCode}
-              onChange={handleZipCodeChange}
-              placeholder="Enter US ZIP code"
-              className="bg-transparent border-none focus:ring-0 flex-grow px-3 py-1 w-20"
-              maxLength={5}
-            />
-            <button
-              type="submit"
-              className="bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-bold py-2 px-4 rounded-full"
-            >
-              Search
-            </button>
-          </div>
-          {zipCodeError && (
-            <p className="text-red-500 text-sm text-center">{zipCodeError}</p>
-          )}
-        </form>
+        <ZipCodeForm
+          zipCode={zipCode}
+          zipCodeError={zipCodeError}
+          onZipCodeChange={handleZipCodeChange}
+          onSubmit={handleZipCodeSubmit}
+          buttonText="Search"
+          className="max-w-md mx-auto mb-4"
+          showLabel={true}
+        />
         
       </div>
     )
@@ -273,28 +307,12 @@ export default function AdoptablePet() {
             <ChevronRight size={24} />
           </button>
         </div>
-        <form onSubmit={handleZipCodeSubmit} className="flex flex-col gap-2">
-          <div className="flex items-center bg-gray-100 rounded-full p-2">
-            <MapPin className="text-gray-400 ml-2" size={20} />
-            <input
-              type="text"
-              value={zipCode}
-              onChange={handleZipCodeChange}
-              placeholder="Enter US ZIP code"
-              className="bg-transparent border-none focus:ring-0 flex-grow px-3 py-1 w-20"
-              maxLength={5}
-            />
-            <button
-              type="submit"
-              className="bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-bold py-2 px-4 rounded-full"
-            >
-              Update
-            </button>
-          </div>
-          {zipCodeError && (
-            <p className="text-red-500 text-sm text-center">{zipCodeError}</p>
-          )}
-        </form>
+        <ZipCodeForm
+          zipCode={zipCode}
+          zipCodeError={zipCodeError}
+          onZipCodeChange={handleZipCodeChange}
+          onSubmit={handleZipCodeSubmit}
+        />
       </div>
     </div>
   )
