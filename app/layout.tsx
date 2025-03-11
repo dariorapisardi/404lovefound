@@ -1,7 +1,7 @@
 import type React from "react"
 import "./globals.css"
 import { Inter } from "next/font/google"
-
+import { Analytics } from "@vercel/analytics/react"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
@@ -20,6 +20,7 @@ export default function RootLayout({
         <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-pink-300 via-purple-300 to-indigo-400 p-4">
           {children}
         </div>
+        <Analytics />
       </body>
     </html>
   )
