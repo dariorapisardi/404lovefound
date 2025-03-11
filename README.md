@@ -1,6 +1,6 @@
 # 404lovefound
 
-This repository contains the source code for 404love.found, a service that transforms frustrating 404 "Not Found" errors into an opportunity by displaying adoptable pets from your area. Instead of showing a standard error page, why not give your users a chance to discover a pet in need of a home?
+This repository contains the source code for 404found.love, a service that transforms frustrating 404 "Not Found" errors into an opportunity by displaying adoptable pets from your area. Instead of showing a standard error page, why not give your users a chance to discover a pet in need of a home?
 
 ## Usage
 
