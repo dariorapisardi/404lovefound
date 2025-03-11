@@ -1,12 +1,12 @@
 "use client"
 
-import type React from "react"
 import type { Pet } from "@/lib/types"
-import { useState, useEffect, useCallback } from "react"
+import { AnimatePresence, motion } from "framer-motion"
+import { AlertCircle, ChevronLeft, ChevronRight, MapPin } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { ChevronLeft, ChevronRight, AlertCircle, MapPin } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
+import type React from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useSwipeable } from "react-swipeable"
 import { getRandomZipCode } from "../lib/zipCodes"
 
@@ -166,13 +166,32 @@ export default function AdoptablePet() {
   if (pets.length === 0) {
     return (
       <div className="bg-white rounded-3xl shadow-lg p-8 text-center">
-        <p className="text-gray-800">No pets found at the moment.</p>
-        <button
-          onClick={() => fetchPets(zipCode)}
-          className="mt-4 bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out hover:from-pink-600 hover:to-yellow-600"
-        >
-          Try Again
-        </button>
+        <p className="text-gray-800 mb-4">No pets found at the moment.</p>
+        
+        <form onSubmit={handleZipCodeSubmit} className="flex flex-col gap-2 max-w-md mx-auto mb-4">
+          <p className="text-gray-600 mb-2">Try searching in a different location (US Zip Code):</p>
+          <div className="flex items-center bg-gray-100 rounded-full p-2">
+            <MapPin className="text-gray-400 ml-2" size={20} />
+            <input
+              type="text"
+              value={zipCode}
+              onChange={handleZipCodeChange}
+              placeholder="Enter US ZIP code"
+              className="bg-transparent border-none focus:ring-0 flex-grow px-3 py-1 w-20"
+              maxLength={5}
+            />
+            <button
+              type="submit"
+              className="bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-bold py-2 px-4 rounded-full"
+            >
+              Search
+            </button>
+          </div>
+          {zipCodeError && (
+            <p className="text-red-500 text-sm text-center">{zipCodeError}</p>
+          )}
+        </form>
+        
       </div>
     )
   }
@@ -261,8 +280,8 @@ export default function AdoptablePet() {
               type="text"
               value={zipCode}
               onChange={handleZipCodeChange}
-              placeholder="Enter ZIP code"
-              className="bg-transparent border-none focus:ring-0 flex-grow px-3 py-1"
+              placeholder="Enter US ZIP code"
+              className="bg-transparent border-none focus:ring-0 flex-grow px-3 py-1 w-20"
               maxLength={5}
             />
             <button
