@@ -43,13 +43,13 @@ export async function GET(request: Request) {
     })
 
     if (!response.ok) {
-      const errorText = await response.text()
-      console.error("API Response Error:", {
-        status: response.status,
-        statusText: response.statusText,
-        body: errorText,
+    const errorText = await response.text();
+    console.error("API Response Error:", {
+      status: response.status,
+      statusText: response.statusText,
+      body: errorText,
       })
-      return NextResponse.json({ error: `API returned ${response.status}: ${errorText}` }, { status: response.status })
+      return NextResponse.json({ error: "Failed to fetch pets. Please try again later." }, { status: response.status })
     }
 
     const data = await response.json()
