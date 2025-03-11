@@ -9,7 +9,6 @@ import { ChevronLeft, ChevronRight, AlertCircle, MapPin } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useSwipeable } from "react-swipeable"
 import { getRandomZipCode } from "../lib/zipCodes"
-import { postcodeValidator } from "postcode-validator"
 
 interface Picture {
   id: string
@@ -30,7 +29,7 @@ export default function AdoptablePet() {
   const [zipCodeError, setZipCodeError] = useState<string | null>(null)
 
   const isValidUSZipCode = (zipCode: string): boolean => {
-    return postcodeValidator(zipCode, "US")
+    return /^\d{5}(-\d{4})?$/.test(zipCode)
   }
 
   const fetchUserLocation = useCallback(async () => {
@@ -203,17 +202,26 @@ export default function AdoptablePet() {
             transition={{ duration: 0.3 }}
             className="absolute inset-0"
           >
+            <div className="absolute inset-0">
+              <Image
+                src={pictureUrl || "/placeholder.svg"}
+                alt="background"
+                fill
+                className="object-fill"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+            </div>
             <Image
               src={pictureUrl || "/placeholder.svg"}
               alt={currentPet.attributes.name}
               fill
-              className="object-cover"
+              className="object-scale-down"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-60"></div>
           </motion.div>
         </AnimatePresence>
-        <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+        <div className="absolute bottom-0 left-0 right-0 p-6 text-white [text-shadow:_0_1px_12px_rgb(0_0_0_/_50%)]">
           <h2 className="text-3xl font-bold mb-2">
             {currentPet.attributes.name}, {currentPet.attributes.ageString}
           </h2>
