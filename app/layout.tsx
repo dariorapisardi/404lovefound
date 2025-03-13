@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   title: "404 Love Found",
   description: "Find love when you're lost",
+  icons: {
+    icon: "/favicon.ico",
+  },
 }
 
 export default function RootLayout({
