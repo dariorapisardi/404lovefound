@@ -16,6 +16,16 @@ The `referer` parameter is optional and will be used for the BACK button functio
 - If not provided, it will attempt to use the HTTP referer header
 - If neither is available, it will use `history.back()`
 
+### HTTP Status Code Control
+
+By default, the page returns a 200 HTTP status code. If you need the page to return an actual 404 HTTP status code (for SEO or other technical reasons), add the `nf` parameter:
+
+```
+https://404found.love?nf=true
+```
+
+This will return a 404 HTTP status code while still displaying the same content.
+
 ## Local Development Setup
 
 The following instructions are only necessary if you want to run your own instance of the service locally or fork the project. If you just want to use the service on your website, refer to the Usage section above.
