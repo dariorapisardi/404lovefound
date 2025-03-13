@@ -8,9 +8,6 @@ interface PageContentProps {
 }
 
 export default function PageContent({ referrer }: PageContentProps) {
-  // Log the referrer for debugging purposes
-  console.log("PageContent received referrer:", referrer)
-
   return (
     <div className="w-full max-w-4xl">
       <h1 className="text-4xl font-bold mb-6 text-center text-white drop-shadow-lg">

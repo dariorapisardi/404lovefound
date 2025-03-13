@@ -17,14 +17,5 @@ export default function NotFound() {
   // Prioritize URL referer over header referer
   const referer = urlReferer || headerReferer
 
-  // Log all URL parameters for debugging
-  console.log(
-    "Not Found Page - URL Parameters:",
-    Array.from(searchParams.entries()).reduce((obj, [key, value]) => {
-      obj[key] = value
-      return obj
-    }, {} as Record<string, string>)
-  )
-
   return <PageContent referrer={referer} />
 }
