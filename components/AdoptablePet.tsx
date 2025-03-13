@@ -301,7 +301,7 @@ export default function AdoptablePet() {
             target="_blank"
             rel="noopener noreferrer"
             className="bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out hover:from-pink-600 hover:to-yellow-600"
-            aria-label={`View adoption details for ${currentPet.attributes.name}`}
+            aria-label={`Go check ${currentPet.attributes.name}`}
           >
             Go check {currentPet.attributes.name}
           </Link>
