@@ -85,9 +85,9 @@ export default function AdoptablePet() {
 
   const fetchUserLocation = useCallback(async () => {
     try {
-      const response = await fetch("http://ip-api.com/json/")
+      const response = await fetch("https://freeipapi.com/api/json")
       const data = await response.json()
-      return data.zip || null
+      return data.zipCode || null
     } catch (error) {
       console.error("Error fetching user location:", error)
       return null
