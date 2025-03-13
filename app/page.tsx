@@ -1,6 +1,6 @@
 import { headers } from "next/headers"
-import AdoptablePet from "../components/AdoptablePet"
-import GoBackLink from "../components/GoBackLink"
+import { notFound } from "next/navigation"
+import PageContent from "../components/PageContent"
 
 export default async function Page({
   searchParams,
@@ -11,20 +11,16 @@ export default async function Page({
   const headerReferer = headersList.get("referer") || ""
   const params = await searchParams
   const referer = params.referer?.toString() || headerReferer
-  return (
-    <div className="w-full max-w-4xl">
-      <h1 className="text-4xl font-bold mb-6 text-center text-white drop-shadow-lg">
-        404 Love Found
-      </h1>
-      <p className="text-xl mb-8 text-white drop-shadow-lg text-center">
-        The page you&apos;re looking for doesn&apos;t exist, but love is always
-        around the corner!
-      </p>
-      <AdoptablePet />
-      <div className="flex flex-col items-center h-4"></div>
-      <div className="flex justify-center w-full">
-        <GoBackLink referrer={referer} />
-      </div>
-    </div>
-  )
+
+  // Check if the nf parameter is true to return a 404 status code
+  const shouldReturn404 = params.nf === "true"
+
+  // If nf=true, use Next.js notFound() to return a 404 status code
+  // while still rendering our custom content
+  if (shouldReturn404) {
+    // Next.js automatically preserves the URL parameters when calling notFound()
+    notFound()
+  }
+
+  return <PageContent referrer={referer} />
 }
