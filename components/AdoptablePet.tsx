@@ -41,7 +41,9 @@ function ZipCodeForm({
   return (
     <form onSubmit={onSubmit} className={`flex flex-col gap-2 ${className}`}>
       {showLabel && (
-        <p className="text-gray-600 mb-2">Try searching in a different location (US Zip Code):</p>
+        <p className="text-gray-600 mb-2">
+          Try searching in a different location (US Zip Code):
+        </p>
       )}
       <div className="flex items-center bg-gray-100 rounded-full p-2">
         <MapPin className="text-gray-400 ml-2" size={20} />
@@ -56,6 +58,7 @@ function ZipCodeForm({
         <button
           type="submit"
           className="bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-bold py-2 px-4 rounded-full"
+          aria-label={`${buttonText} zip code search`}
         >
           {buttonText}
         </button>
@@ -204,6 +207,7 @@ export default function AdoptablePet() {
         <button
           onClick={() => fetchPets(zipCode)}
           className="bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out hover:from-pink-600 hover:to-yellow-600"
+          aria-label="Try fetching pets again"
         >
           Try Again
         </button>
@@ -215,7 +219,7 @@ export default function AdoptablePet() {
     return (
       <div className="bg-white rounded-3xl shadow-lg p-8 text-center">
         <p className="text-gray-800 mb-4">No pets found at the moment.</p>
-        
+
         <ZipCodeForm
           zipCode={zipCode}
           zipCodeError={zipCodeError}
@@ -225,7 +229,6 @@ export default function AdoptablePet() {
           className="max-w-md mx-auto mb-4"
           showLabel={true}
         />
-        
       </div>
     )
   }
@@ -289,6 +292,7 @@ export default function AdoptablePet() {
           <button
             onClick={() => handleSwipe("right")}
             className="bg-white text-pink-500 border-2 border-pink-500 rounded-full p-3 transition duration-300 ease-in-out hover:bg-pink-100"
+            aria-label="Previous pet"
           >
             <ChevronLeft size={24} />
           </button>
@@ -297,12 +301,14 @@ export default function AdoptablePet() {
             target="_blank"
             rel="noopener noreferrer"
             className="bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out hover:from-pink-600 hover:to-yellow-600"
+            aria-label={`View adoption details for ${currentPet.attributes.name}`}
           >
             Go check {currentPet.attributes.name}
           </Link>
           <button
             onClick={() => handleSwipe("left")}
             className="bg-white text-pink-500 border-2 border-pink-500 rounded-full p-3 transition duration-300 ease-in-out hover:bg-pink-100"
+            aria-label="Next pet"
           >
             <ChevronRight size={24} />
           </button>
