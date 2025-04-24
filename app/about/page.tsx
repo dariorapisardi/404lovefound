@@ -5,10 +5,10 @@ export default function About() {
         About
       </h1>
       <p className="text-xl mb-8 text-gray-900">
-        Hi! I'm Dario, the creator of 404 Love Found. The aim of this site is to
-        transform the "404 Not Found" pages into opportunities to help adoptable
-        pets find homes. Instead of a blank error page, users will see local
-        pets who need a family.
+        Hi! I&apos;m Dario, the creator of 404 Love Found. The aim of this site
+        is to transform the &quot;404 Not Found&quot; pages into opportunities
+        to help adoptable pets find homes. Instead of a blank error page, users
+        will see local pets who need a family.
       </p>
       <h2 className="text-2xl font-bold mb-4 text-gray-900">How it works</h2>
       <p className="text-xl mb-8 text-gray-900">
@@ -32,8 +32,8 @@ export default function About() {
         security in a loving home.
       </p>
       <p className="text-xl mb-8 text-gray-900">
-        Can increasing awareness of pets in need help increase adoptions? That's
-        the question I'm trying to answer, hence this site.
+        Can increasing awareness of pets in need help increase adoptions? That&apos;s
+        the question I&apos;m trying to answer, hence this site.
       </p>
       <h2 className="text-2xl font-bold mb-4 text-gray-900">Join</h2>
       <p className="text-xl mb-8 text-gray-900">
