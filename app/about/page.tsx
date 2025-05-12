@@ -8,7 +8,7 @@ export default function About() {
       </h1>
       <div className="relative w-full h-[300px] mb-8">
         <Image
-          src="/with-sammie.png"
+          src="/with-sammie.jpg"
           alt="Dario with Sammie"
           fill
           className="object-cover rounded-lg"
