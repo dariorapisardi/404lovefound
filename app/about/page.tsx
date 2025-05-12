@@ -1,9 +1,20 @@
+import Image from "next/image"
+
 export default function About() {
   return (
     <div className="w-full max-w-4xl">
       <h1 className="text-4xl font-bold mb-6 text-center text-gray-900">
         About
       </h1>
+      <div className="relative w-full h-[300px] mb-8">
+        <Image
+          src="/with-sammie.jpg"
+          alt="Dario with Sammie"
+          fill
+          className="object-cover rounded-lg"
+          priority
+        />
+      </div>
       <p className="text-xl mb-8 text-gray-900">
         Hi! I&apos;m Dario, the creator of 404 Love Found. The aim of this site
         is to transform the &quot;404 Not Found&quot; pages into opportunities
@@ -32,8 +43,8 @@ export default function About() {
         security in a loving home.
       </p>
       <p className="text-xl mb-8 text-gray-900">
-        Can increasing awareness of pets in need help increase adoptions? That&apos;s
-        the question I&apos;m trying to answer, hence this site.
+        Can increasing awareness of pets in need help increase adoptions?
+        That&apos;s the question I&apos;m trying to answer, hence this site.
       </p>
       <h2 className="text-2xl font-bold mb-4 text-gray-900">Join</h2>
       <p className="text-xl mb-8 text-gray-900">
