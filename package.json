@@ -13,7 +13,7 @@
     "autoprefixer": "^10.4.20",
     "framer-motion": "latest",
     "lucide-react": "^0.454.0",
-    "next": "15.4.9",
+    "next": "15.4.10",
     "postcode-validator": "^3.10.2",
     "react": "^19",
     "react-dom": "^19",
