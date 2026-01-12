@@ -54,15 +54,6 @@ export async function GET() {
       }
     }
 
-    // Log available headers for debugging
-    console.log("Cloudflare headers:", {
-      country,
-      city,
-      region,
-      latitude,
-      longitude,
-    })
-
     // Return null if we can't determine a valid US ZIP code
     return NextResponse.json({ zipCode: null })
   } catch (error) {
