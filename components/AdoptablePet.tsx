@@ -85,11 +85,17 @@ export default function AdoptablePet() {
 
   const fetchUserLocation = useCallback(async () => {
     try {
-      const response = await fetch("https://freeipapi.com/api/json")
+      const response = await fetch("/api/user-location")
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
       const data = await response.json()
       return data.zipCode || null
     } catch (error) {
-      console.error("Error fetching user location:", error)
+      console.error(
+        "Error fetching user location from Cloudflare headers:",
+        error
+      )
       return null
     }
   }, [])
