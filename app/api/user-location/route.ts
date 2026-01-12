@@ -6,12 +6,12 @@ export async function GET() {
     const headersList = await headers()
     
     // Cloudflare provides these headers for IP geolocation
-    // Headers are case-insensitive in Next.js, but Cloudflare uses CF-IP* format
-    const country = headersList.get("cf-ipcountry") || headersList.get("CF-IPCountry")
-    const latitude = headersList.get("cf-iplatitude") || headersList.get("CF-IPLatitude")
-    const longitude = headersList.get("cf-iplongitude") || headersList.get("CF-IPLongitude")
-    const city = headersList.get("cf-ipcity") || headersList.get("CF-IPCity")
-    const region = headersList.get("cf-ipregion") || headersList.get("CF-IPRegion")
+    // Headers are case-insensitive in Next.js
+    const country = headersList.get("CF-IPCountry")
+    const latitude = headersList.get("CF-IPLatitude")
+    const longitude = headersList.get("CF-IPLongitude")
+    const city = headersList.get("CF-IPCity")
+    const region = headersList.get("CF-IPRegion")
 
     // Check if we're in the US
     if (country && country !== "US") {
